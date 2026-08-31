@@ -1,0 +1,51 @@
+# ==============================
+# OS generated files
+# ==============================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==============================
+# IDE / Editor files
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+
+# ==============================
+# Temporary files
+# ==============================
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ==============================
+# Node.js (if used later)
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ==============================
+# Environment / secrets
+# ==============================
+.env
+.env.*
+!.env.example
+
+# ==============================
+# Build / deployment output
+# ==============================
+dist/
+build/
+.cache/
