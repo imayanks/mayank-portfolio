@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
@@ -22,3690 +16,186 @@
 
     <meta
         name="theme-color"
-        content="#f8fafc"
+        content="#f7f9f6"
     >
 
-    <title>
-        Mayank Shashank Gupta | DevOps Engineer
-    </title>
+    <title>Mayank Shashank Gupta | DevOps Engineer</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-        /* =====================================================
-           DESIGN SYSTEM
-        ===================================================== */
-
-        :root {
-
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-
-            --dark: #111827;
-            --dark-soft: #1f2937;
-
-            --text: #4b5563;
-            --muted: #6b7280;
-
-            --white: #ffffff;
-
-            --background: #f8fafc;
-            --background-soft: #f1f5f9;
-
-            --border: #e5e7eb;
-            --border-dark: #dbe1e8;
-
-            --blue-soft: #eff6ff;
-            --green: #16a34a;
-            --green-soft: #f0fdf4;
-
-            --max-width: 1160px;
-
-            --radius: 8px;
-
-            --shadow:
-                0 15px 40px rgba(15, 23, 42, 0.07);
-        }
-
-
-        /* =====================================================
-           RESET
-        ===================================================== */
-
-        *,
-        *::before,
-        *::after {
-
-            margin: 0;
-            padding: 0;
-
-            box-sizing: border-box;
-        }
-
-
-        html {
-
-            scroll-behavior: smooth;
-        }
-
-
-        body {
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
-
-            color: var(--dark);
-
-            background: var(--background);
-
-            line-height: 1.6;
-
-            overflow-x: hidden;
-        }
-
-
-        a {
-
-            color: inherit;
-
-            text-decoration: none;
-        }
-
-
-        button {
-
-            font-family: inherit;
-        }
-
-
-        img {
-
-            max-width: 100%;
-
-            display: block;
-        }
-
-
-        ::selection {
-
-            background: var(--primary);
-
-            color: white;
-        }
-
-
-        /* =====================================================
-           GLOBAL
-        ===================================================== */
-
-        .container {
-
-            width: min(
-                90%,
-                var(--max-width)
-            );
-
-            margin: 0 auto;
-        }
-
-
-        .section {
-
-            padding: 105px 0;
-
-            scroll-margin-top: 70px;
-        }
-
-
-        .section-light {
-
-            background: var(--white);
-        }
-
-
-        .section-label {
-
-            color: var(--primary);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 10px;
-        }
-
-
-        .section-title {
-
-            font-size:
-                clamp(30px, 4vw, 42px);
-
-            line-height: 1.1;
-
-            letter-spacing: -1.5px;
-
-            color: var(--dark);
-
-            margin-bottom: 12px;
-        }
-
-
-        .section-description {
-
-            max-width: 650px;
-
-            color: var(--text);
-
-            font-size: 14px;
-        }
-
-
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
-
-        .navbar {
-
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-
-            height: 72px;
-
-            z-index: 1000;
-
-            background:
-                rgba(255, 255, 255, 0.94);
-
-            border-bottom:
-                1px solid rgba(229, 231, 235, 0.85);
-
-            backdrop-filter:
-                blur(14px);
-        }
-
-
-        .nav-container {
-
-            height: 72px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-
-        .logo {
-
-            font-size: 21px;
-
-            font-weight: 800;
-
-            letter-spacing: -0.8px;
-        }
-
-
-        .logo span {
-
-            color: var(--primary);
-        }
-
-
-        .nav-menu {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 25px;
-        }
-
-
-        .nav-link {
-
-            position: relative;
-
-            color: var(--muted);
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-            transition:
-                color 0.2s ease;
-        }
-
-
-        .nav-link::after {
-
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            bottom: -7px;
-
-            width: 0;
-
-            height: 2px;
-
-            background:
-                var(--primary);
-
-            transition:
-                width 0.2s ease;
-        }
-
-
-        .nav-link:hover,
-        .nav-link.active {
-
-            color: var(--primary);
-        }
-
-
-        .nav-link.active::after {
-
-            width: 100%;
-        }
-
-
-        .nav-cta {
-
-            padding: 8px 16px;
-
-            border:
-                1px solid var(--primary);
-
-            border-radius: 5px;
-
-            color: var(--primary);
-
-            font-size: 11px;
-
-            font-weight: 700;
-
-            transition:
-                all 0.2s ease;
-        }
-
-
-        .nav-cta:hover {
-
-            background: var(--primary);
-
-            color: white;
-        }
-
-
-        .menu-toggle {
-
-            display: none;
-
-            border: none;
-
-            background: transparent;
-
-            cursor: pointer;
-
-            font-size: 23px;
-
-            color: var(--dark);
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-
-            min-height: 100vh;
-
-            padding-top: 72px;
-
-            display: flex;
-
-            align-items: center;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 520px;
-            height: 520px;
-
-            top: -200px;
-            right: -200px;
-
-            background:
-                rgba(37, 99, 235, 0.045);
-
-            border-radius: 50%;
-
-            pointer-events: none;
-        }
-
-
-        .hero-container {
-
-            display: grid;
-
-            grid-template-columns:
-                1.05fr
-                0.95fr;
-
-            gap: 75px;
-
-            align-items: center;
-        }
-
-
-        .hero-label {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            color: var(--primary);
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 1.8px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .status-dot {
-
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background: var(--green);
-
-            box-shadow:
-                0 0 0 4px
-                rgba(22, 163, 74, 0.08);
-        }
-
-
-        .hero h1 {
-
-            font-size:
-                clamp(44px, 6vw, 70px);
-
-            line-height: 0.98;
-
-            letter-spacing: -3.5px;
-
-            color: var(--dark);
-
-            margin-bottom: 25px;
-        }
-
-
-        .hero h1 .accent {
-
-            color: var(--primary);
-
-            display: block;
-        }
-
-
-        .hero-description {
-
-            max-width: 660px;
-
-            color: var(--text);
-
-            font-size: 15px;
-
-            line-height: 1.8;
-
-            margin-bottom: 20px;
-        }
-
-
-        .hero-focus {
-
-            color: var(--muted);
-
-            font-size: 12px;
-
-            margin-bottom: 28px;
-        }
-
-
-        .hero-focus strong {
-
-            color: var(--dark);
-        }
-
-
-        .hero-buttons {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-bottom: 27px;
-        }
-
-
-        .btn {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 8px;
-
-            padding: 12px 19px;
-
-            border-radius: 5px;
-
-            font-size: 11px;
-
-            font-weight: 700;
-
-            transition:
-                all 0.2s ease;
-        }
-
-
-        .btn-primary {
-
-            background: var(--primary);
-
-            color: white;
-
-            box-shadow:
-                0 8px 20px
-                rgba(37, 99, 235, 0.15);
-        }
-
-
-        .btn-primary:hover {
-
-            background:
-                var(--primary-dark);
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        .btn-outline {
-
-            background: white;
-
-            color: var(--dark);
-
-            border:
-                1px solid var(--border);
-        }
-
-
-        .btn-outline:hover {
-
-            border-color:
-                var(--primary);
-
-            color:
-                var(--primary);
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        .hero-socials {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 20px;
-
-            color: var(--muted);
-
-            font-size: 11px;
-        }
-
-
-        .hero-socials a {
-
-            transition:
-                color 0.2s ease;
-        }
-
-
-        .hero-socials a:hover {
-
-            color: var(--primary);
-        }
-
-
-        /* =====================================================
-           TERMINAL
-        ===================================================== */
-
-        .terminal {
-
-            width: 100%;
-
-            max-width: 500px;
-
-            margin-left: auto;
-
-            background:
-                #0f172a;
-
-            border-radius: 9px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 30px 70px
-                rgba(15, 23, 42, 0.15);
-        }
-
-
-        .terminal-header {
-
-            height: 43px;
-
-            display: flex;
-
-            align-items: center;
-
-            padding: 0 16px;
-
-            background:
-                #1e293b;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.05);
-        }
-
-
-        .terminal-dots {
-
-            display: flex;
-
-            gap: 6px;
-
-            margin-right: 14px;
-        }
-
-
-        .terminal-dots span {
-
-            width: 9px;
-            height: 9px;
-
-            border-radius: 50%;
-
-            background: #64748b;
-        }
-
-
-        .terminal-title {
-
-            color: #94a3b8;
-
-            font-family:
-                "SFMono-Regular",
-                Consolas,
-                monospace;
-
-            font-size: 10px;
-        }
-
-
-        .terminal-body {
-
-            padding: 27px;
-
-            min-height: 360px;
-
-            font-family:
-                "SFMono-Regular",
-                Consolas,
-                "Liberation Mono",
-                monospace;
-
-            font-size: 11px;
-
-            color: #cbd5e1;
-        }
-
-
-        .terminal-line {
-
-            margin-bottom: 13px;
-        }
-
-
-        .terminal-command {
-
-            color: #4ade80;
-        }
-
-
-        .terminal-output {
-
-            padding-left: 18px;
-
-            color: #94a3b8;
-
-            margin-bottom: 17px;
-        }
-
-
-        .terminal-highlight {
-
-            color: #60a5fa;
-        }
-
-
-        .terminal-success {
-
-            color: #4ade80;
-        }
-
-
-        /* =====================================================
-           ABOUT
-        ===================================================== */
-
-        .about-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                1.2fr
-                0.8fr;
-
-            gap: 80px;
-
-            align-items: start;
-        }
-
-
-        .about-copy p {
-
-            color: var(--text);
-
-            font-size: 14px;
-
-            line-height: 1.9;
-
-            margin-bottom: 18px;
-        }
-
-
-        .about-highlight {
-
-            padding: 20px;
-
-            margin-top: 25px;
-
-            background:
-                var(--blue-soft);
-
-            border-left:
-                3px solid var(--primary);
-
-            border-radius: 4px;
-
-            color: var(--dark);
-
-            font-size: 13px;
-
-            font-weight: 600;
-        }
-
-
-        .about-info {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 10px;
-        }
-
-
-        .info-card {
-
-            padding: 18px;
-
-            background:
-                var(--background);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 6px;
-        }
-
-
-        .info-label {
-
-            display: block;
-
-            color: var(--muted);
-
-            font-size: 9px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 5px;
-        }
-
-
-        .info-value {
-
-            color: var(--dark);
-
-            font-size: 12px;
-
-            font-weight: 700;
-        }
-
-
-        /* =====================================================
-           SKILLS
-        ===================================================== */
-
-        .skills-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 15px;
-
-            margin-top: 45px;
-        }
-
-
-        .skill-card {
-
-            padding: 25px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 7px;
-
-            transition:
-                all 0.25s ease;
-        }
-
-
-        .skill-card:hover {
-
-            transform:
-                translateY(-4px);
-
-            border-color:
-                #bfdbfe;
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .skill-number {
-
-            color:
-                #cbd5e1;
-
-            font-family:
-                monospace;
-
-            font-size: 10px;
-
-            margin-bottom: 14px;
-        }
-
-
-        .skill-card h3 {
-
-            font-size: 15px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .skill-card p {
-
-            color: var(--text);
-
-            font-size: 11px;
-
-            line-height: 1.7;
-
-            margin-bottom: 15px;
-        }
-
-
-        .tags {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 6px;
-        }
-
-
-        .tag {
-
-            padding: 4px 8px;
-
-            background:
-                var(--blue-soft);
-
-            color:
-                var(--primary);
-
-            border-radius: 3px;
-
-            font-size: 9px;
-
-            font-weight: 650;
-        }
-
-
-        /* =====================================================
-           PROJECTS
-        ===================================================== */
-
-        .projects-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
-
-            margin-top: 45px;
-        }
-
-
-        .project-card {
-
-            position: relative;
-
-            padding: 29px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 7px;
-
-            transition:
-                all 0.25s ease;
-        }
-
-
-        .project-card:hover {
-
-            transform:
-                translateY(-4px);
-
-            border-color:
-                #bfdbfe;
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .project-header {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 23px;
-        }
-
-
-        .project-index {
-
-            color: var(--primary);
-
-            font-family:
-                monospace;
-
-            font-size: 10px;
-
-            font-weight: 700;
-        }
-
-
-        .project-link {
-
-            color: var(--muted);
-
-            font-size: 11px;
-
-            font-weight: 600;
-
-            transition:
-                color 0.2s ease;
-        }
-
-
-        .project-link:hover {
-
-            color: var(--primary);
-        }
-
-
-        .project-card h3 {
-
-            font-size: 18px;
-
-            line-height: 1.25;
-
-            margin-bottom: 10px;
-        }
-
-
-        .project-card p {
-
-            color: var(--text);
-
-            font-size: 12px;
-
-            line-height: 1.75;
-
-            margin-bottom: 20px;
-        }
-
-
-        .project-tech {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 7px;
-
-            padding-top: 16px;
-
-            border-top:
-                1px solid var(--border);
-        }
-
-
-        .project-tech span {
-
-            color: var(--muted);
-
-            font-family:
-                monospace;
-
-            font-size: 9px;
-        }
-
-
-        .github-button {
-
-            text-align: center;
-
-            margin-top: 38px;
-        }
-
-
-        /* =====================================================
-           EXPERIENCE
-        ===================================================== */
-
-        .experience-wrapper {
-
-            max-width: 950px;
-
-            margin: 45px auto 0;
-        }
-
-
-        .experience-item {
-
-            display: grid;
-
-            grid-template-columns:
-                155px
-                1fr;
-
-            gap: 45px;
-
-            padding: 36px 0;
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .experience-item:first-child {
-
-            border-top:
-                1px solid var(--border);
-        }
-
-
-        .experience-date {
-
-            color: var(--primary);
-
-            font-family:
-                monospace;
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            line-height: 1.7;
-        }
-
-
-        .experience-role {
-
-            font-size: 20px;
-
-            line-height: 1.25;
-
-            margin-bottom: 3px;
-        }
-
-
-        .experience-company {
-
-            color: var(--muted);
-
-            font-size: 12px;
-
-            margin-bottom: 14px;
-        }
-
-
-        .experience-description {
-
-            color: var(--text);
-
-            font-size: 12px;
-
-            line-height: 1.8;
-
-            max-width: 720px;
-        }
-
-
-        .experience-tags {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 6px;
-
-            margin-top: 16px;
-        }
-
-
-        .experience-tags span {
-
-            color: var(--primary);
-
-            background:
-                var(--blue-soft);
-
-            padding: 4px 7px;
-
-            border-radius: 3px;
-
-            font-size: 9px;
-        }
-
-
-        /* =====================================================
-           CREDENTIALS
-        ===================================================== */
-
-        .credentials-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 17px;
-
-            margin-top: 45px;
-        }
-
-
-        .credential {
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: space-between;
-
-            min-height: 205px;
-
-            padding: 25px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 7px;
-
-            transition:
-                all 0.25s ease;
-        }
-
-
-        .credential:hover {
-
-            transform:
-                translateY(-4px);
-
-            border-color:
-                #bfdbfe;
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .credential-top {
-
-            display: flex;
-
-            align-items: flex-start;
-
-            gap: 13px;
-        }
-
-
-        .credential-icon {
-
-            width: 38px;
-            height: 38px;
-
-            flex-shrink: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background:
-                var(--blue-soft);
-
-            color:
-                var(--primary);
-
-            border-radius: 5px;
-
-            font-family:
-                monospace;
-
-            font-size: 10px;
-
-            font-weight: 800;
-        }
-
-
-        .credential h3 {
-
-            font-size: 14px;
-
-            line-height: 1.35;
-
-            margin-bottom: 5px;
-        }
-
-
-        .credential-issuer {
-
-            color: var(--muted);
-
-            font-size: 10px;
-        }
-
-
-        .credential-date {
-
-            color: var(--primary);
-
-            font-size: 9px;
-
-            margin-top: 5px;
-        }
-
-
-        .credential-button {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-top: 22px;
-
-            padding-top: 14px;
-
-            border-top:
-                1px solid var(--border);
-
-            color: var(--primary);
-
-            font-size: 10px;
-
-            font-weight: 700;
-        }
-
-
-        .credential-button:hover {
-
-            color:
-                var(--primary-dark);
-        }
-
-
-        /* =====================================================
-           INTERNSHIP CERTIFICATES
-        ===================================================== */
-
-        .internship-certificates {
-
-            margin-top: 50px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
-        }
-
-
-        .internship-certificate {
-
-            padding: 25px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 7px;
-
-            transition:
-                all 0.25s ease;
-        }
-
-
-        .internship-certificate:hover {
-
-            border-color:
-                #bfdbfe;
-
-            box-shadow:
-                var(--shadow);
-        }
-
-
-        .certificate-meta {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-bottom: 20px;
-        }
-
-
-        .certificate-type {
-
-            color: var(--primary);
-
-            font-family:
-                monospace;
-
-            font-size: 9px;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-        }
-
-
-        .certificate-period {
-
-            color: var(--muted);
-
-            font-size: 9px;
-        }
-
-
-        .certificate-content {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-
-        .certificate-content h3 {
-
-            font-size: 16px;
-
-            margin-bottom: 5px;
-        }
-
-
-        .certificate-content p {
-
-            color: var(--muted);
-
-            font-size: 11px;
-        }
-
-
-        .certificate-open {
-
-            flex-shrink: 0;
-
-            width: 38px;
-            height: 38px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 5px;
-
-            color: var(--primary);
-
-            font-size: 14px;
-
-            transition:
-                all 0.2s ease;
-        }
-
-
-        .certificate-open:hover {
-
-            background:
-                var(--primary);
-
-            color: white;
-
-            border-color:
-                var(--primary);
-        }
-
-
-        /* =====================================================
-           CONTACT
-        ===================================================== */
-
-        .contact-section {
-
-            background:
-                var(--dark);
-        }
-
-
-        .contact-section .section-label {
-
-            color:
-                #60a5fa;
-        }
-
-
-        .contact-container {
-
-            display: grid;
-
-            grid-template-columns:
-                1.15fr
-                0.85fr;
-
-            gap: 90px;
-
-            align-items: center;
-        }
-
-
-        .contact-title {
-
-            color: white;
-
-            font-size:
-                clamp(38px, 5vw, 58px);
-
-            line-height: 1.02;
-
-            letter-spacing: -2.5px;
-
-            margin-bottom: 20px;
-        }
-
-
-        .contact-title span {
-
-            color:
-                #60a5fa;
-        }
-
-
-        .contact-description {
-
-            max-width: 560px;
-
-            color:
-                #9ca3af;
-
-            font-size: 13px;
-
-            line-height: 1.8;
-
-            margin-bottom: 27px;
-        }
-
-
-        .contact-button {
-
-            display: inline-flex;
-
-            background: white;
-
-            color: var(--dark);
-        }
-
-
-        .contact-button:hover {
-
-            background:
-                #eff6ff;
-
-            color:
-                var(--primary);
-        }
-
-
-        .contact-details {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 17px;
-        }
-
-
-        .contact-item {
-
-            padding-bottom: 15px;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.1);
-        }
-
-
-        .contact-item-label {
-
-            display: block;
-
-            color:
-                #64748b;
-
-            font-size: 9px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 4px;
-        }
-
-
-        .contact-item a,
-        .contact-item p {
-
-            color:
-                #e5e7eb;
-
-            font-size: 12px;
-
-            transition:
-                color 0.2s ease;
-        }
-
-
-        .contact-item a:hover {
-
-            color:
-                #60a5fa;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        .footer {
-
-            background:
-                #0b1120;
-
-            padding: 24px 0;
-        }
-
-
-        .footer-container {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-
-        .footer p {
-
-            color:
-                #64748b;
-
-            font-size: 9px;
-        }
-
-
-        /* =====================================================
-           SCROLL ANIMATION
-        ===================================================== */
-
-        .reveal {
-
-            opacity: 0;
-
-            transform:
-                translateY(20px);
-
-            transition:
-                opacity 0.65s ease,
-                transform 0.65s ease;
-        }
-
-
-        .reveal.visible {
-
-            opacity: 1;
-
-            transform:
-                translateY(0);
-        }
-
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
-        @media (max-width: 950px) {
-
-            .nav-menu {
-
-                position: absolute;
-
-                top: 72px;
-
-                left: 0;
-
-                width: 100%;
-
-                display: none;
-
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 18px;
-
-                padding: 22px 5%;
-
-                background:
-                    white;
-
-                border-bottom:
-                    1px solid var(--border);
-            }
-
-
-            .nav-menu.open {
-
-                display: flex;
-            }
-
-
-            .nav-cta {
-
-                display: none;
-            }
-
-
-            .menu-toggle {
-
-                display: block;
-            }
-
-
-            .hero-container {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 55px;
-            }
-
-
-            .terminal {
-
-                margin-left: 0;
-            }
-
-
-            .about-grid {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 45px;
-            }
-
-
-            .skills-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-
-            .credentials-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-
-            .contact-container {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 45px;
-            }
-
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 650px) {
-
-            .section {
-
-                padding: 75px 0;
-            }
-
-
-            .hero {
-
-                padding-top: 115px;
-
-                padding-bottom: 75px;
-            }
-
-
-            .hero h1 {
-
-                font-size: 43px;
-
-                letter-spacing: -2px;
-            }
-
-
-            .hero-description {
-
-                font-size: 13px;
-            }
-
-
-            .hero-buttons {
-
-                flex-direction: column;
-
-                align-items: stretch;
-            }
-
-
-            .btn {
-
-                width: 100%;
-            }
-
-
-            .hero-socials {
-
-                gap: 15px;
-
-                flex-wrap: wrap;
-            }
-
-
-            .terminal-body {
-
-                padding: 21px;
-
-                min-height: 320px;
-
-                font-size: 9px;
-            }
-
-
-            .skills-grid,
-            .projects-grid,
-            .credentials-grid,
-            .internship-certificates {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .about-info {
-
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-
-            .experience-item {
-
-                grid-template-columns:
-                    1fr;
-
-                gap: 9px;
-
-                padding: 28px 0;
-            }
-
-
-            .experience-role {
-
-                font-size: 18px;
-            }
-
-
-            .certificate-content {
-
-                align-items: flex-start;
-            }
-
-
-            .contact-title {
-
-                font-size: 42px;
-
-                letter-spacing: -2px;
-            }
-
-
-            .footer-container {
-
-                flex-direction: column;
-
-                text-align: center;
-            }
-
-        }
-
-
-        @media (max-width: 400px) {
-
-            .about-info {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 
 <body>
 
+    <div class="background-grid"></div>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+    <div class="cursor-glow"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
+    <header class="navbar" id="navbar">
 
-<header class="navbar">
+        <div class="container nav-container">
 
-    <div class="container nav-container">
-
-
-        <a
-            href="#home"
-            class="logo"
-        >
-            Mayank<span>.</span>
-        </a>
-
-
-        <nav
-            class="nav-menu"
-            id="navMenu"
-        >
-
-            <a
-                href="#home"
-                class="nav-link active"
-            >
-                Home
+            <a href="#home" class="logo">
+                Mayank<span>.</span>
             </a>
 
+            <nav class="nav-menu" id="navMenu">
 
-            <a
-                href="#about"
-                class="nav-link"
-            >
-                About
-            </a>
-
-
-            <a
-                href="#skills"
-                class="nav-link"
-            >
-                Skills
-            </a>
-
-
-            <a
-                href="#projects"
-                class="nav-link"
-            >
-                Projects
-            </a>
-
-
-            <a
-                href="#experience"
-                class="nav-link"
-            >
-                Experience
-            </a>
-
-
-            <a
-                href="#credentials"
-                class="nav-link"
-            >
-                Credentials
-            </a>
-
-
-            <a
-                href="#contact"
-                class="nav-link"
-            >
-                Contact
-            </a>
-
-        </nav>
-
-
-        <div>
-
-            <a
-                href="#contact"
-                class="nav-cta"
-            >
-                Let's Talk
-            </a>
-
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Toggle navigation"
-            >
-                ☰
-            </button>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main>
-
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
-<section
-    class="hero"
-    id="home"
->
-
-
-    <div class="container hero-container">
-
-
-        <div class="hero-content">
-
-
-            <div class="hero-label">
-
-                <span class="status-dot"></span>
-
-                OPEN TO FULL-TIME DEVOPS OPPORTUNITIES
-
-            </div>
-
-
-            <h1>
-
-                DevOps Engineer
-
-                <span class="accent">
-                    focused on automation.
-                </span>
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                DevOps fresher with hands-on experience building,
-                deploying and managing cloud-native applications
-                using AWS, Kubernetes, Docker, CI/CD, GitOps,
-                Infrastructure as Code and observability tools.
-
-            </p>
-
-
-            <p class="hero-focus">
-
-                Currently focused on
-                <strong>
-                    CI/CD · Automation · Cloud Infrastructure · GitOps
-                </strong>
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="#projects"
-                    class="btn btn-primary"
-                >
-                    Explore Projects →
+                <a href="#home" class="nav-link active">
+                    Home
                 </a>
 
-
-                <a
-                    href="assets/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-outline"
-                >
-                    View Resume
+                <a href="#about" class="nav-link">
+                    About
                 </a>
 
-            </div>
-
-
-            <div class="hero-socials">
-
-
-                <a
-                    href="https://github.com/imayanks"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    GitHub ↗
+                <a href="#skills" class="nav-link">
+                    Skills
                 </a>
 
-
-                <a
-                    href="https://www.linkedin.com/in/imayank0705"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    LinkedIn ↗
+                <a href="#projects" class="nav-link">
+                    Projects
                 </a>
 
-
-                <a
-                    href="mailto:guptamayankshashank@gmail.com"
-                >
-                    Email ↗
+                <a href="#experience" class="nav-link">
+                    Experience
                 </a>
 
-            </div>
+                <a href="#credentials" class="nav-link">
+                    Credentials
+                </a>
 
-        </div>
+                <a href="#contact" class="nav-link">
+                    Contact
+                </a>
 
+            </nav>
 
+            <div class="nav-right">
 
-        <!-- =================================================
-             TERMINAL
-        ================================================== -->
+                <a href="#contact" class="nav-cta">
+                    Let's Talk
+                    <span>↗</span>
+                </a>
 
-        <div class="terminal">
-
-
-            <div class="terminal-header">
-
-
-                <div class="terminal-dots">
-
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false"
+                >
                     <span></span>
                     <span></span>
-                    <span></span>
-
-                </div>
-
-
-                <p class="terminal-title">
-
-                    mayank@devops: ~
-
-                </p>
-
-            </div>
-
-
-
-            <div class="terminal-body">
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    whoami
-
-                </p>
-
-
-                <p class="terminal-output">
-
-                    Mayank Shashank Gupta
-
-                </p>
-
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    role
-
-                </p>
-
-
-                <p class="terminal-output">
-
-                    Aspiring DevOps Engineer
-
-                </p>
-
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    stack
-
-                </p>
-
-
-                <p class="terminal-output">
-
-                    <span class="terminal-highlight">
-                        AWS
-                    </span>
-                    · Kubernetes
-                    · Docker
-                    · Terraform
-
-                    <br>
-
-                    Git
-                    · Jenkins
-                    · GitHub Actions
-                    · Argo CD
-
-                </p>
-
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    focus
-
-                </p>
-
-
-                <p class="terminal-output">
-
-                    Automation
-                    · CI/CD
-                    · GitOps
-
-                </p>
-
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    experience
-
-                </p>
-
-
-                <p class="terminal-output">
-
-                    2 internships
-                    · hands-on projects
-
-                </p>
-
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    status
-
-                </p>
-
-
-                <p class="terminal-success">
-
-                    ● available_for_full_time = true
-
-                </p>
-
-
-
-                <p class="terminal-line">
-
-                    <span class="terminal-command">
-                        $
-                    </span>
-
-                    _
-
-                </p>
+                </button>
 
             </div>
 
         </div>
 
-    </div>
+    </header>
 
-</section>
 
+    <main>
 
+        <section class="hero section" id="home">
 
-<!-- =========================================================
-     ABOUT
-========================================================= -->
+            <div class="container hero-container">
 
-<section
-    class="section section-light"
-    id="about"
->
+                <div class="hero-content reveal">
 
+                    <div class="hero-label">
 
-    <div class="container">
+                        <span class="status-dot"></span>
 
-
-        <div class="section-label">
-            01 — About
-        </div>
-
-
-        <h2 class="section-title">
-            From curiosity to infrastructure.
-        </h2>
-
-
-        <p class="section-description">
-
-            A practical DevOps journey built around learning,
-            experimentation and real projects.
-
-        </p>
-
-
-
-        <div class="about-grid">
-
-
-            <div class="about-copy">
-
-
-                <p>
-
-                    My background is in civil engineering, but my
-                    interest in technology led me towards software,
-                    infrastructure and DevOps.
-
-                    I started learning through online resources
-                    and gradually moved from understanding individual
-                    tools to building complete deployment workflows.
-
-                </p>
-
-
-                <p>
-
-                    Through internships and personal projects,
-                    I have worked across development, infrastructure,
-                    networking, containerization, cloud platforms,
-                    CI/CD, GitOps, security and monitoring.
-
-                </p>
-
-
-                <p>
-
-                    The part I enjoy most is automation — taking
-                    repetitive deployment and operational work and
-                    turning it into a reliable, repeatable process.
-
-                </p>
-
-
-                <div class="about-highlight">
-
-                    I like understanding the complete path from
-                    developer code → CI → security checks → container
-                    → infrastructure → deployment → monitoring.
-
-                </div>
-
-            </div>
-
-
-
-            <div class="about-info">
-
-
-                <div class="info-card">
-
-                    <span class="info-label">
-                        Education
-                    </span>
-
-                    <span class="info-value">
-                        B.Tech — BMSCE
-                    </span>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-label">
-                        Graduation
-                    </span>
-
-                    <span class="info-value">
-                        2024
-                    </span>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-label">
-                        Location
-                    </span>
-
-                    <span class="info-value">
-                        India
-                    </span>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-label">
-                        Experience
-                    </span>
-
-                    <span class="info-value">
-                        2 Internships
-                    </span>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-label">
-                        Primary Focus
-                    </span>
-
-                    <span class="info-value">
-                        DevOps
-                    </span>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <span class="info-label">
-                        Interest
-                    </span>
-
-                    <span class="info-value">
-                        Automation
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SKILLS
-========================================================= -->
-
-<section
-    class="section"
-    id="skills"
->
-
-
-    <div class="container">
-
-
-        <div class="section-label">
-            02 — Technical Stack
-        </div>
-
-
-        <h2 class="section-title">
-            Tools I work with.
-        </h2>
-
-
-        <p class="section-description">
-
-            Hands-on exposure across the DevOps lifecycle,
-            from source code to production observability.
-
-        </p>
-
-
-
-        <div class="skills-grid">
-
-
-            <!-- CLOUD -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    01 / CLOUD
-                </div>
-
-                <h3>
-                    Cloud & Infrastructure
-                </h3>
-
-                <p>
-                    Cloud environments, compute, networking
-                    and Linux-based infrastructure.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">AWS</span>
-                    <span class="tag">EC2</span>
-                    <span class="tag">EKS</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag">Networking</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CONTAINERS -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    02 / CONTAINERS
-                </div>
-
-                <h3>
-                    Containers & Kubernetes
-                </h3>
-
-                <p>
-                    Containerized workloads and Kubernetes
-                    application deployment.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">Docker</span>
-                    <span class="tag">Kubernetes</span>
-                    <span class="tag">Helm</span>
-                    <span class="tag">Kind</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CI/CD -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    03 / DELIVERY
-                </div>
-
-                <h3>
-                    CI/CD & GitOps
-                </h3>
-
-                <p>
-                    Automated build, testing, delivery and
-                    declarative application deployment.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">Git</span>
-                    <span class="tag">Jenkins</span>
-                    <span class="tag">GitHub Actions</span>
-                    <span class="tag">Argo CD</span>
-                    <span class="tag">GitOps</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- IAC -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    04 / AUTOMATION
-                </div>
-
-                <h3>
-                    Infrastructure as Code
-                </h3>
-
-                <p>
-                    Infrastructure provisioning and
-                    configuration automation.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">Terraform</span>
-                    <span class="tag">Ansible</span>
-                    <span class="tag">Chef</span>
-                    <span class="tag">Shell</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SECURITY -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    05 / SECURITY
-                </div>
-
-                <h3>
-                    DevSecOps
-                </h3>
-
-                <p>
-                    Security and quality checks integrated
-                    into CI workflows.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">SonarQube</span>
-                    <span class="tag">Trivy</span>
-                    <span class="tag">OWASP</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- OBSERVABILITY -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    06 / OBSERVABILITY
-                </div>
-
-                <h3>
-                    Monitoring & Logging
-                </h3>
-
-                <p>
-                    Metrics, dashboards and centralized
-                    application logging.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">Prometheus</span>
-                    <span class="tag">Grafana</span>
-                    <span class="tag">ELK</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- PROGRAMMING -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    07 / CODE
-                </div>
-
-                <h3>
-                    Programming & Scripting
-                </h3>
-
-                <p>
-                    Programming and scripting for automation,
-                    utilities and application development.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">Python</span>
-                    <span class="tag">Shell</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Java</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- WEB -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    08 / WEB
-                </div>
-
-                <h3>
-                    Application & Web
-                </h3>
-
-                <p>
-                    Working knowledge of application and
-                    web technologies used in deployment projects.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">React</span>
-                    <span class="tag">Nginx</span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- COLLABORATION -->
-
-            <div class="skill-card">
-
-                <div class="skill-number">
-                    09 / WORKFLOW
-                </div>
-
-                <h3>
-                    Collaboration & Tools
-                </h3>
-
-                <p>
-                    Version control, project tracking and
-                    collaborative development workflows.
-                </p>
-
-                <div class="tags">
-
-                    <span class="tag">GitHub</span>
-                    <span class="tag">Jira</span>
-                    <span class="tag">Git</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PROJECTS
-========================================================= -->
-
-<section
-    class="section section-light"
-    id="projects"
->
-
-
-    <div class="container">
-
-
-        <div class="section-label">
-            03 — Projects
-        </div>
-
-
-        <h2 class="section-title">
-            Selected work.
-        </h2>
-
-
-        <p class="section-description">
-
-            Projects focused on cloud deployment, automation,
-            Kubernetes, GitOps, security and observability.
-
-        </p>
-
-
-
-        <div class="projects-grid">
-
-
-            <!-- PROJECT 01 -->
-
-            <article class="project-card">
-
-
-                <div class="project-header">
-
-                    <span class="project-index">
-                        PROJECT / 01
-                    </span>
-
-
-                    <a
-                        href="https://github.com/imayanks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-
-                <h3>
-                    Retail Store — GitOps Deployment
-                </h3>
-
-
-                <p>
-
-                    Deployed a microservices-based retail
-                    application on AWS EKS using Terraform
-                    for infrastructure provisioning and a
-                    GitHub Actions → ECR → Helm → Argo CD
-                    workflow for application delivery.
-
-                </p>
-
-
-                <div class="project-tech">
-
-                    <span>AWS EKS</span>
-                    <span>Terraform</span>
-                    <span>GitHub Actions</span>
-                    <span>Docker</span>
-                    <span>ECR</span>
-                    <span>Helm</span>
-                    <span>Argo CD</span>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 02 -->
-
-            <article class="project-card">
-
-
-                <div class="project-header">
-
-                    <span class="project-index">
-                        PROJECT / 02
-                    </span>
-
-
-                    <a
-                        href="https://github.com/imayanks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-
-                <h3>
-                    Kubernetes GitOps Deployment
-                </h3>
-
-
-                <p>
-
-                    Deployed a containerized voting application
-                    on a Kubernetes cluster hosted on AWS EC2,
-                    managing application components through
-                    Argo CD and monitoring workloads using
-                    Prometheus and Grafana.
-
-                </p>
-
-
-                <div class="project-tech">
-
-                    <span>AWS EC2</span>
-                    <span>Kubernetes</span>
-                    <span>Kind</span>
-                    <span>Docker</span>
-                    <span>Argo CD</span>
-                    <span>Prometheus</span>
-                    <span>Grafana</span>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 03 -->
-
-            <article class="project-card">
-
-
-                <div class="project-header">
-
-                    <span class="project-index">
-                        PROJECT / 03
-                    </span>
-
-
-                    <a
-                        href="https://github.com/imayanks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-
-                <h3>
-                    Wanderlust — DevSecOps & GitOps
-                </h3>
-
-
-                <p>
-
-                    Deployed a three-tier MERN application
-                    on AWS EKS with Jenkins-based CI,
-                    integrated security and quality scanning,
-                    and Argo CD for GitOps-based delivery.
-
-                </p>
-
-
-                <div class="project-tech">
-
-                    <span>AWS EKS</span>
-                    <span>Jenkins</span>
-                    <span>Docker</span>
-                    <span>Helm</span>
-                    <span>OWASP</span>
-                    <span>SonarQube</span>
-                    <span>Trivy</span>
-                    <span>Argo CD</span>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 04 -->
-
-            <article class="project-card">
-
-
-                <div class="project-header">
-
-                    <span class="project-index">
-                        PROJECT / 04
-                    </span>
-
-
-                    <a
-                        href="https://github.com/imayanks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-
-                <h3>
-                    Python for DevOps & AI
-                </h3>
-
-
-                <p>
-
-                    Built Python-based DevOps utilities for
-                    system health monitoring, log analysis,
-                    AWS resource reporting and internal APIs,
-                    with experimentation around AI-powered
-                    log analysis.
-
-                </p>
-
-
-                <div class="project-tech">
-
-                    <span>Python</span>
-                    <span>AWS</span>
-                    <span>Boto3</span>
-                    <span>FastAPI</span>
-                    <span>LangChain</span>
-                    <span>LangGraph</span>
-                    <span>Ollama</span>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 05 -->
-
-            <article class="project-card">
-
-
-                <div class="project-header">
-
-                    <span class="project-index">
-                        PROJECT / 05
-                    </span>
-
-
-                    <a
-                        href="https://github.com/imayanks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-
-                <h3>
-                    Notes App — Docker Deployment
-                </h3>
-
-
-                <p>
-
-                    Containerized a Django and React
-                    application using Docker and configured
-                    Nginx as a reverse proxy to expose the
-                    application through a web server.
-
-                </p>
-
-
-                <div class="project-tech">
-
-                    <span>Docker</span>
-                    <span>Django</span>
-                    <span>React</span>
-                    <span>Nginx</span>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- PROJECT 06 -->
-
-            <article class="project-card">
-
-
-                <div class="project-header">
-
-                    <span class="project-index">
-                        PROJECT / 06
-                    </span>
-
-
-                    <a
-                        href="https://github.com/imayanks"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        GitHub ↗
-                    </a>
-
-                </div>
-
-
-                <h3>
-                    Real-Time Chat Application
-                </h3>
-
-
-                <p>
-
-                    Containerized a full-stack real-time
-                    chat application with separate services,
-                    Docker Compose networking, Nginx,
-                    JWT authentication and Socket.io messaging.
-
-                </p>
-
-
-                <div class="project-tech">
-
-                    <span>Docker</span>
-                    <span>Node.js</span>
-                    <span>React</span>
-                    <span>MongoDB</span>
-                    <span>Nginx</span>
-                    <span>Socket.io</span>
-
-                </div>
-
-            </article>
-
-        </div>
-
-
-
-        <div class="github-button">
-
-            <a
-                href="https://github.com/imayanks"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-            >
-                View All Projects on GitHub ↗
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     EXPERIENCE
-========================================================= -->
-
-<section
-    class="section"
-    id="experience"
->
-
-
-    <div class="container">
-
-
-        <div class="section-label">
-            04 — Experience
-        </div>
-
-
-        <h2 class="section-title">
-            Where I've applied it.
-        </h2>
-
-
-        <p class="section-description">
-
-            Internship experience focused on practical DevOps,
-            deployment and production-oriented workflows.
-
-        </p>
-
-
-
-        <div class="experience-wrapper">
-
-
-            <!-- TWS -->
-
-            <div class="experience-item">
-
-
-                <div class="experience-date">
-
-                    FEB 2026
-                    <br>
-                    —
-                    <br>
-                    JUL 2026
-
-                </div>
-
-
-                <div>
-
-
-                    <h3 class="experience-role">
-
-                        DevOps Intern
-
-                    </h3>
-
-
-                    <p class="experience-company">
-
-                        Train with Shubham · 6 Months
-
-                    </p>
-
-
-                    <p class="experience-description">
-
-                        Worked through hands-on DevOps projects
-                        covering Linux, networking, Git, CI/CD,
-                        Docker, Kubernetes, AWS, Terraform,
-                        Ansible, GitOps, observability and
-                        DevSecOps.
-
-                        Built and troubleshot practical deployment
-                        workflows while developing an understanding
-                        of the complete software delivery lifecycle.
-
-                    </p>
-
-
-                    <div class="experience-tags">
-
-                        <span>Linux</span>
-                        <span>AWS</span>
-                        <span>Docker</span>
-                        <span>Kubernetes</span>
-                        <span>CI/CD</span>
-                        <span>GitOps</span>
+                        OPEN TO FULL-TIME DEVOPS OPPORTUNITIES
 
                     </div>
 
-                </div>
 
-            </div>
-
-
-
-            <!-- MAKSHA -->
-
-            <div class="experience-item">
-
-
-                <div class="experience-date">
-
-                    AUG 2026
-                    <br>
-                    —
-                    <br>
-                    PRESENT
-
-                </div>
-
-
-                <div>
-
-
-                    <h3 class="experience-role">
-
-                        DevOps & Web Infrastructure Intern
-
-                    </h3>
-
-
-                    <p class="experience-company">
-
-                        Maksha · Present
-
-                    </p>
-
-
-                    <p class="experience-description">
-
-                        Contributing to the deployment and ongoing
-                        management of the company's website while
-                        supporting CI/CD workflows and production
-                        operations.
-
-                        Working with Git, Linux, Docker and web
-                        infrastructure to streamline application
-                        deployments, manage updates and improve
-                        deployment reliability.
-
-                    </p>
-
-
-                    <div class="experience-tags">
-
-                        <span>CI/CD</span>
-                        <span>Git</span>
-                        <span>Linux</span>
-                        <span>Docker</span>
-                        <span>Web Infrastructure</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CREDENTIALS
-========================================================= -->
-
-<section
-    class="section section-light"
-    id="credentials"
->
-
-
-    <div class="container">
-
-
-        <div class="section-label">
-            05 — Credentials
-        </div>
-
-
-        <h2 class="section-title">
-            Certifications & credentials.
-        </h2>
-
-
-        <p class="section-description">
-
-            A collection of learning credentials supporting
-            my hands-on DevOps journey.
-
-        </p>
-
-
-
-        <!-- =================================================
-             CERTIFICATION TABS / CARDS
-        ================================================== -->
-
-        <div class="credentials-grid">
-
-
-            <!-- AWS -->
-
-            <div class="credential">
-
-
-                <div class="credential-top">
-
-
-                    <div class="credential-icon">
-                        AWS
+                    <div class="hero-kicker">
+                        DEVOPS ENGINEER / CLOUD / AUTOMATION
                     </div>
 
 
-                    <div>
-
-                        <h3>
-                            AWS: Zero to Hero
-                        </h3>
-
-
-                        <p class="credential-issuer">
-                            Train with Shubham
-                        </p>
-
-
-                        <p class="credential-date">
-                            Issued · August 06, 2026
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <a
-                    href="assets/AWS 0 to H.png"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="credential-button"
-                >
-
-                    <span>
-                        Open Certificate
-                    </span>
-
-                    <span>
-                        ↗
-                    </span>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- PYTHON -->
-
-            <div class="credential">
-
-
-                <div class="credential-top">
-
-
-                    <div class="credential-icon">
-                        PY
-                    </div>
-
-
-                    <div>
-
-                        <h3>
-                            Python for DevOps
-                        </h3>
-
-
-                        <p class="credential-issuer">
-                            DevOps & Automation
-                        </p>
-
-
-                        <p class="credential-date">
-                            Certificate
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <a
-                    href="assets/Py For DevOps Certificate.jpg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="credential-button"
-                >
-
-                    <span>
-                        Open Certificate
-                    </span>
-
-                    <span>
-                        ↗
-                    </span>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- CLOUD -->
-
-            <div class="credential">
-
-
-                <div class="credential-top">
-
-
-                    <div class="credential-icon">
-                        CC
-                    </div>
-
-
-                    <div>
-
-                        <h3>
-                            Cloud Computing
-                        </h3>
-
-
-                        <p class="credential-issuer">
-                            Tutedude
-                        </p>
-
-
-                        <p class="credential-date">
-                            Completed · June 18, 2026
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <a
-                    href="assets/certificate_TD-MAYA-CC-1140.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="credential-button"
-                >
-
-                    <span>
-                        Open Certificate
-                    </span>
-
-                    <span>
-                        ↗
-                    </span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             INTERNSHIP CERTIFICATES
-        ================================================== -->
-
-        <div
-            style="
-                margin-top: 85px;
-            "
-        >
-
-
-            <div class="section-label">
-                Internship Credentials
-            </div>
-
-
-            <h3
-                style="
-                    font-size: 25px;
-                    letter-spacing: -0.8px;
-                    margin-bottom: 10px;
-                "
-            >
-                Professional experience certificates.
-            </h3>
-
-
-            <p
-                class="section-description"
-            >
-
-                Certificates validating practical internship
-                experience in DevOps and related workflows.
-
-            </p>
-
-
-            <div class="internship-certificates">
-
-
-                <!-- MAKSHA -->
-
-                <div
-                    class="internship-certificate"
-                >
-
-
-                    <div class="certificate-meta">
-
-
-                        <span class="certificate-type">
-                            INTERNSHIP / DEVOPS
+                    <h1>
+                        DevOps Engineer
+                        <span>
+                            focused on automation.
                         </span>
+                    </h1>
 
 
-                        <span class="certificate-period">
-                            AUG 2026 — PRESENT
-                        </span>
-
-                    </div>
-
-
-                    <div class="certificate-content">
+                    <p class="hero-description">
+                        DevOps fresher with hands-on experience building,
+                        deploying and managing cloud-native applications
+                        using AWS, Kubernetes, Docker, CI/CD, GitOps,
+                        Infrastructure as Code and observability tools.
+                    </p>
 
 
-                        <div>
+                    <p class="hero-focus">
+                        Currently focused on
+                        <strong>
+                            CI/CD · Automation · Cloud Infrastructure · GitOps
+                        </strong>
+                    </p>
 
-                            <h3>
-                                DevOps & Web Infrastructure Intern
-                            </h3>
 
+                    <div class="hero-buttons">
 
-                            <p>
-                                Maksha
-                            </p>
-
-                        </div>
+                        <a
+                            href="#projects"
+                            class="btn btn-primary"
+                        >
+                            Explore Projects
+                            <span>→</span>
+                        </a>
 
 
                         <a
-                            href="assets/MAKSHA Internship.png"
+                            href="assets/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="certificate-open"
-                            aria-label="Open Maksha internship certificate"
+                            class="btn btn-outline"
                         >
-                            ↗
+                            View Resume
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-socials">
+
+                        <a
+                            href="https://github.com/imayanks"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub ↗
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/imayank0705"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn ↗
+                        </a>
+
+                        <a
+                            href="mailto:guptamayankshashank@gmail.com"
+                        >
+                            Email ↗
                         </a>
 
                     </div>
@@ -3713,54 +203,1353 @@
                 </div>
 
 
+                <div class="hero-visual reveal">
 
-                <!-- TWS -->
+                    <div class="terminal-card">
 
-                <div
-                    class="internship-certificate"
-                >
+                        <div class="terminal-header">
+
+                            <div class="terminal-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <span class="terminal-title">
+                                mayank@devops: ~
+                            </span>
+
+                            <span class="terminal-live">
+                                ● LIVE
+                            </span>
+
+                        </div>
 
 
-                    <div class="certificate-meta">
-
-
-                        <span class="certificate-type">
-                            INTERNSHIP / DEVOPS
-                        </span>
-
-
-                        <span class="certificate-period">
-                            FEB 2026 — JUL 2026
-                        </span>
+                        <div
+                            class="terminal-body"
+                            id="terminalBody"
+                        ></div>
 
                     </div>
 
 
-                    <div class="certificate-content">
+                    <div class="floating-card floating-card-one">
+
+                        <span>AWS</span>
+
+                        <small>
+                            cloud
+                        </small>
+
+                    </div>
+
+
+                    <div class="floating-card floating-card-two">
+
+                        <span>K8s</span>
+
+                        <small>
+                            orchestration
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-scroll">
+
+                <span>
+                    Scroll to explore
+                </span>
+
+                <b>
+                    ↓
+                </b>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="section section-light"
+            id="about"
+        >
+
+            <div class="container">
+
+                <div class="section-head reveal">
+
+                    <span class="section-index">
+                        01
+                    </span>
+
+                    <div>
+
+                        <div class="section-label">
+                            ABOUT
+                        </div>
+
+                        <h2 class="section-title">
+                            From curiosity to infrastructure.
+                        </h2>
+
+                        <p class="section-description">
+                            A practical DevOps journey built around
+                            learning, experimentation and real projects.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-copy reveal">
+
+                        <p>
+                            My background is in civil engineering, but my
+                            interest in technology led me towards software,
+                            infrastructure and DevOps. I started learning
+                            through online resources and gradually moved
+                            from understanding individual tools to building
+                            complete deployment workflows.
+                        </p>
+
+
+                        <p>
+                            Through internships and personal projects,
+                            I have worked across development, infrastructure,
+                            networking, containerization, cloud platforms,
+                            CI/CD, GitOps, security and monitoring.
+                        </p>
+
+
+                        <p>
+                            The part I enjoy most is automation — taking
+                            repetitive deployment and operational work and
+                            turning it into a reliable, repeatable process.
+                        </p>
+
+
+                        <div class="about-highlight">
+
+                            <span>→</span>
+
+                            I like understanding the complete path from
+                            developer code → CI → security checks →
+                            container → infrastructure → deployment →
+                            monitoring.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-info reveal">
+
+                        <div class="info-card">
+                            <span class="info-label">
+                                Education
+                            </span>
+
+                            <span class="info-value">
+                                B.Tech — BMSCE
+                            </span>
+                        </div>
+
+
+                        <div class="info-card">
+                            <span class="info-label">
+                                Graduation
+                            </span>
+
+                            <span class="info-value">
+                                2024
+                            </span>
+                        </div>
+
+
+                        <div class="info-card">
+                            <span class="info-label">
+                                Location
+                            </span>
+
+                            <span class="info-value">
+                                India
+                            </span>
+                        </div>
+
+
+                        <div class="info-card">
+                            <span class="info-label">
+                                Experience
+                            </span>
+
+                            <span class="info-value">
+                                2 Internships
+                            </span>
+                        </div>
+
+
+                        <div class="info-card">
+                            <span class="info-label">
+                                Primary Focus
+                            </span>
+
+                            <span class="info-value">
+                                DevOps
+                            </span>
+                        </div>
+
+
+                        <div class="info-card">
+                            <span class="info-label">
+                                Interest
+                            </span>
+
+                            <span class="info-value">
+                                Automation
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="section"
+            id="skills"
+        >
+
+            <div class="container">
+
+                <div class="section-head reveal">
+
+                    <span class="section-index">
+                        02
+                    </span>
+
+                    <div>
+
+                        <div class="section-label">
+                            TECHNICAL STACK
+                        </div>
+
+                        <h2 class="section-title">
+                            Tools I work with.
+                        </h2>
+
+                        <p class="section-description">
+                            Hands-on exposure across the DevOps lifecycle,
+                            from source code to production observability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skills-grid">
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            01 / CLOUD
+                        </div>
+
+                        <h3>
+                            Cloud & Infrastructure
+                        </h3>
+
+                        <p>
+                            Cloud environments, compute, networking
+                            and Linux-based infrastructure.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">AWS</span>
+                            <span class="tag">EC2</span>
+                            <span class="tag">EKS</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Networking</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            02 / CONTAINERS
+                        </div>
+
+                        <h3>
+                            Containers & Kubernetes
+                        </h3>
+
+                        <p>
+                            Containerized workloads and Kubernetes
+                            application deployment.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Helm</span>
+                            <span class="tag">Kind</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            03 / DELIVERY
+                        </div>
+
+                        <h3>
+                            CI/CD & GitOps
+                        </h3>
+
+                        <p>
+                            Automated build, testing, delivery and
+                            declarative application deployment.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Git</span>
+                            <span class="tag">Jenkins</span>
+                            <span class="tag">GitHub Actions</span>
+                            <span class="tag">Argo CD</span>
+                            <span class="tag">GitOps</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            04 / AUTOMATION
+                        </div>
+
+                        <h3>
+                            Infrastructure as Code
+                        </h3>
+
+                        <p>
+                            Infrastructure provisioning and
+                            configuration automation.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Ansible</span>
+                            <span class="tag">Chef</span>
+                            <span class="tag">Shell</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            05 / SECURITY
+                        </div>
+
+                        <h3>
+                            DevSecOps
+                        </h3>
+
+                        <p>
+                            Security and quality checks integrated
+                            into CI workflows.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">SonarQube</span>
+                            <span class="tag">Trivy</span>
+                            <span class="tag">OWASP</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            06 / OBSERVABILITY
+                        </div>
+
+                        <h3>
+                            Monitoring & Logging
+                        </h3>
+
+                        <p>
+                            Metrics, dashboards and centralized
+                            application logging.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Prometheus</span>
+                            <span class="tag">Grafana</span>
+                            <span class="tag">ELK</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            07 / CODE
+                        </div>
+
+                        <h3>
+                            Programming & Scripting
+                        </h3>
+
+                        <p>
+                            Programming and scripting for automation,
+                            utilities and application development.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Shell</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Java</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            08 / WEB
+                        </div>
+
+                        <h3>
+                            Application & Web
+                        </h3>
+
+                        <p>
+                            Working knowledge of application and
+                            web technologies used in deployment projects.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Nginx</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="skill-card reveal">
+
+                        <div class="skill-number">
+                            09 / WORKFLOW
+                        </div>
+
+                        <h3>
+                            Collaboration & Tools
+                        </h3>
+
+                        <p>
+                            Version control, project tracking and
+                            collaborative development workflows.
+                        </p>
+
+                        <div class="tags">
+                            <span class="tag">GitHub</span>
+                            <span class="tag">Jira</span>
+                            <span class="tag">Git</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="section section-light"
+            id="projects"
+        >
+
+            <div class="container">
+
+                <div class="section-head reveal">
+
+                    <span class="section-index">
+                        03
+                    </span>
+
+                    <div>
+
+                        <div class="section-label">
+                            PROJECTS
+                        </div>
+
+                        <h2 class="section-title">
+                            Selected work.
+                        </h2>
+
+                        <p class="section-description">
+                            Projects focused on cloud deployment,
+                            automation, Kubernetes, GitOps, security
+                            and observability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+                    <article class="project-card reveal">
+
+                        <div class="project-header">
+
+                            <span class="project-index">
+                                PROJECT / 01
+                            </span>
+
+                            <a
+                                href="https://github.com/imayanks"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            Retail Store — GitOps Deployment
+                        </h3>
+
+
+                        <p>
+                            Deployed a microservices-based retail
+                            application on AWS EKS using Terraform
+                            for infrastructure provisioning and a
+                            GitHub Actions → ECR → Helm → Argo CD
+                            workflow for application delivery.
+                        </p>
+
+
+                        <div class="project-tech">
+                            <span>AWS EKS</span>
+                            <span>Terraform</span>
+                            <span>GitHub Actions</span>
+                            <span>Docker</span>
+                            <span>ECR</span>
+                            <span>Helm</span>
+                            <span>Argo CD</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card reveal">
+
+                        <div class="project-header">
+
+                            <span class="project-index">
+                                PROJECT / 02
+                            </span>
+
+                            <a
+                                href="https://github.com/imayanks"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            Kubernetes GitOps Deployment
+                        </h3>
+
+
+                        <p>
+                            Deployed a containerized voting application
+                            on a Kubernetes cluster hosted on AWS EC2,
+                            managing application components through
+                            Argo CD and monitoring workloads using
+                            Prometheus and Grafana.
+                        </p>
+
+
+                        <div class="project-tech">
+                            <span>AWS EC2</span>
+                            <span>Kubernetes</span>
+                            <span>Kind</span>
+                            <span>Docker</span>
+                            <span>Argo CD</span>
+                            <span>Prometheus</span>
+                            <span>Grafana</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card reveal">
+
+                        <div class="project-header">
+
+                            <span class="project-index">
+                                PROJECT / 03
+                            </span>
+
+                            <a
+                                href="https://github.com/imayanks"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            Wanderlust — DevSecOps & GitOps
+                        </h3>
+
+
+                        <p>
+                            Deployed a three-tier MERN application
+                            on AWS EKS with Jenkins-based CI,
+                            integrated security and quality scanning,
+                            and Argo CD for GitOps-based delivery.
+                        </p>
+
+
+                        <div class="project-tech">
+                            <span>AWS EKS</span>
+                            <span>Jenkins</span>
+                            <span>Docker</span>
+                            <span>Helm</span>
+                            <span>OWASP</span>
+                            <span>SonarQube</span>
+                            <span>Trivy</span>
+                            <span>Argo CD</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card reveal">
+
+                        <div class="project-header">
+
+                            <span class="project-index">
+                                PROJECT / 04
+                            </span>
+
+                            <a
+                                href="https://github.com/imayanks"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            Python for DevOps & AI
+                        </h3>
+
+
+                        <p>
+                            Built Python-based DevOps utilities for
+                            system health monitoring, log analysis,
+                            AWS resource reporting and internal APIs,
+                            with experimentation around AI-powered
+                            log analysis.
+                        </p>
+
+
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>AWS</span>
+                            <span>Boto3</span>
+                            <span>FastAPI</span>
+                            <span>LangChain</span>
+                            <span>LangGraph</span>
+                            <span>Ollama</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card reveal">
+
+                        <div class="project-header">
+
+                            <span class="project-index">
+                                PROJECT / 05
+                            </span>
+
+                            <a
+                                href="https://github.com/imayanks"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            Notes App — Docker Deployment
+                        </h3>
+
+
+                        <p>
+                            Containerized a Django and React
+                            application using Docker and configured
+                            Nginx as a reverse proxy to expose the
+                            application through a web server.
+                        </p>
+
+
+                        <div class="project-tech">
+                            <span>Docker</span>
+                            <span>Django</span>
+                            <span>React</span>
+                            <span>Nginx</span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="project-card reveal">
+
+                        <div class="project-header">
+
+                            <span class="project-index">
+                                PROJECT / 06
+                            </span>
+
+                            <a
+                                href="https://github.com/imayanks"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-link"
+                            >
+                                GitHub ↗
+                            </a>
+
+                        </div>
+
+
+                        <h3>
+                            Real-Time Chat Application
+                        </h3>
+
+
+                        <p>
+                            Containerized a full-stack real-time
+                            chat application with separate services,
+                            Docker Compose networking, Nginx,
+                            JWT authentication and Socket.io messaging.
+                        </p>
+
+
+                        <div class="project-tech">
+                            <span>Docker</span>
+                            <span>Node.js</span>
+                            <span>React</span>
+                            <span>MongoDB</span>
+                            <span>Nginx</span>
+                            <span>Socket.io</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="github-button reveal">
+
+                    <a
+                        href="https://github.com/imayanks"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-outline"
+                    >
+                        View All Projects on GitHub
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="section"
+            id="experience"
+        >
+
+            <div class="container">
+
+                <div class="section-head reveal">
+
+                    <span class="section-index">
+                        04
+                    </span>
+
+                    <div>
+
+                        <div class="section-label">
+                            EXPERIENCE
+                        </div>
+
+                        <h2 class="section-title">
+                            Where I've applied it.
+                        </h2>
+
+                        <p class="section-description">
+                            Internship experience focused on practical
+                            DevOps, deployment and production-oriented
+                            workflows.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="experience-wrapper">
+
+
+                    <article class="experience-item reveal">
+
+                        <div class="experience-date">
+                            FEB 2026
+                            <br>
+                            —
+                            <br>
+                            JUL 2026
+                        </div>
 
 
                         <div>
 
-                            <h3>
+                            <h3 class="experience-role">
                                 DevOps Intern
                             </h3>
 
-
-                            <p>
+                            <p class="experience-company">
                                 Train with Shubham · 6 Months
                             </p>
+
+                            <p class="experience-description">
+                                Worked through hands-on DevOps projects
+                                covering Linux, networking, Git, CI/CD,
+                                Docker, Kubernetes, AWS, Terraform,
+                                Ansible, GitOps, observability and
+                                DevSecOps.
+
+                                Built and troubleshot practical deployment
+                                workflows while developing an understanding
+                                of the complete software delivery lifecycle.
+                            </p>
+
+
+                            <div class="experience-tags">
+                                <span>Linux</span>
+                                <span>AWS</span>
+                                <span>Docker</span>
+                                <span>Kubernetes</span>
+                                <span>CI/CD</span>
+                                <span>GitOps</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="experience-item reveal">
+
+                        <div class="experience-date">
+                            JUL 2026
+                            <br>
+                            —
+                            <br>
+                            PRESENT
+                        </div>
+
+
+                        <div>
+
+                            <h3 class="experience-role">
+                                DevOps & Web Infrastructure Intern
+                            </h3>
+
+                            <p class="experience-company">
+                                Maksha · Present
+                            </p>
+
+                            <p class="experience-description">
+                                Contributing to the deployment and ongoing
+                                management of the company's website while
+                                supporting CI/CD workflows and production
+                                operations.
+
+                                Working with Git, Linux, Docker and web
+                                infrastructure to streamline application
+                                deployments, manage updates and improve
+                                deployment reliability.
+                            </p>
+
+
+                            <div class="experience-tags">
+                                <span>CI/CD</span>
+                                <span>Git</span>
+                                <span>Linux</span>
+                                <span>Docker</span>
+                                <span>Web Infrastructure</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="section section-light"
+            id="credentials"
+        >
+
+            <div class="container">
+
+                <div class="section-head reveal">
+
+                    <span class="section-index">
+                        05
+                    </span>
+
+                    <div>
+
+                        <div class="section-label">
+                            CREDENTIALS
+                        </div>
+
+                        <h2 class="section-title">
+                            Certifications & credentials.
+                        </h2>
+
+                        <p class="section-description">
+                            A collection of learning credentials
+                            supporting my hands-on DevOps journey.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="credentials-grid">
+
+
+                    <article class="credential reveal">
+
+                        <div class="credential-top">
+
+                            <div class="credential-icon">
+                                AWS
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    AWS: Zero to Hero
+                                </h3>
+
+                                <p class="credential-issuer">
+                                    Train with Shubham
+                                </p>
+
+                                <p class="credential-date">
+                                    Issued · August 06, 2026
+                                </p>
+
+                            </div>
 
                         </div>
 
 
                         <a
-                            href="assets/TWS Internship.pdf"
+                            href="assets/AWS 0 to H.png"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="certificate-open"
-                            aria-label="Open Train with Shubham internship certificate"
+                            class="credential-button"
                         >
-                            ↗
+                            <span>
+                                Open Certificate
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+                        </a>
+
+                    </article>
+
+
+                    <article class="credential reveal">
+
+                        <div class="credential-top">
+
+                            <div class="credential-icon">
+                                PY
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Python for DevOps
+                                </h3>
+
+                                <p class="credential-issuer">
+                                    DevOps & Automation
+                                </p>
+
+                                <p class="credential-date">
+                                    Certificate
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="assets/Py For DevOps Certificate.jpg"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="credential-button"
+                        >
+                            <span>
+                                Open Certificate
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+                        </a>
+
+                    </article>
+
+
+                    <article class="credential reveal">
+
+                        <div class="credential-top">
+
+                            <div class="credential-icon">
+                                CC
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Cloud Computing
+                                </h3>
+
+                                <p class="credential-issuer">
+                                    Tutedude
+                                </p>
+
+                                <p class="credential-date">
+                                    Completed · June 18, 2026
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="assets/certificate_TD-MAYA-CC-1140.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="credential-button"
+                        >
+                            <span>
+                                Open Certificate
+                            </span>
+
+                            <span>
+                                ↗
+                            </span>
+                        </a>
+
+                    </article>
+
+                </div>
+
+
+                <div class="subhead reveal">
+
+                    <div class="section-label">
+                        INTERNSHIP CREDENTIALS
+                    </div>
+
+                    <h3>
+                        Professional experience certificates.
+                    </h3>
+
+                    <p>
+                        Certificates validating practical internship
+                        experience in DevOps and related workflows.
+                    </p>
+
+                </div>
+
+
+                <div class="internship-certificates">
+
+
+                    <article class="internship-certificate reveal">
+
+                        <div class="certificate-meta">
+
+                            <span class="certificate-type">
+                                INTERNSHIP / DEVOPS
+                            </span>
+
+                            <span class="certificate-period">
+                                JUL 2026 — PRESENT
+                            </span>
+
+                        </div>
+
+
+                        <div class="certificate-content">
+
+                            <div>
+
+                                <h3>
+                                    DevOps & Web Infrastructure Intern
+                                </h3>
+
+                                <p>
+                                    Maksha
+                                </p>
+
+                            </div>
+
+
+                            <a
+                                href="assets/MAKSHA Internship.png"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="certificate-open"
+                                aria-label="Open Maksha internship certificate"
+                            >
+                                ↗
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="internship-certificate reveal">
+
+                        <div class="certificate-meta">
+
+                            <span class="certificate-type">
+                                INTERNSHIP / DEVOPS
+                            </span>
+
+                            <span class="certificate-period">
+                                FEB 2026 — JUL 2026
+                            </span>
+
+                        </div>
+
+
+                        <div class="certificate-content">
+
+                            <div>
+
+                                <h3>
+                                    DevOps Intern
+                                </h3>
+
+                                <p>
+                                    Train with Shubham · 6 Months
+                                </p>
+
+                            </div>
+
+
+                            <a
+                                href="assets/TWS Internship.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="certificate-open"
+                                aria-label="Open Train with Shubham internship certificate"
+                            >
+                                ↗
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="section contact-section"
+            id="contact"
+        >
+
+            <div class="container contact-container">
+
+                <div class="contact-main reveal">
+
+                    <div class="section-label">
+                        06 — CONTACT
+                    </div>
+
+                    <h2 class="contact-title">
+                        Let's build
+                        <span>
+                            reliable systems.
+                        </span>
+                    </h2>
+
+                    <p class="contact-description">
+                        I'm currently open to full-time DevOps opportunities.
+                        If you're looking for someone who enjoys automation,
+                        CI/CD, cloud infrastructure and learning how systems
+                        work end-to-end, I'd be happy to connect.
+                    </p>
+
+                    <a
+                        href="mailto:guptamayankshashank@gmail.com"
+                        class="btn contact-button"
+                    >
+                        Start a Conversation
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="contact-details reveal">
+
+                    <div class="contact-item">
+
+                        <span class="contact-item-label">
+                            Email
+                        </span>
+
+                        <a
+                            href="mailto:guptamayankshashank@gmail.com"
+                        >
+                            guptamayankshashank@gmail.com
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span class="contact-item-label">
+                            Phone
+                        </span>
+
+                        <a href="tel:+917903411876">
+                            +91 79034 11876
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span class="contact-item-label">
+                            GitHub
+                        </span>
+
+                        <a
+                            href="https://github.com/imayanks"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            github.com/imayanks ↗
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span class="contact-item-label">
+                            LinkedIn
+                        </span>
+
+                        <a
+                            href="https://www.linkedin.com/in/imayank0705"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            linkedin.com/in/imayank0705 ↗
                         </a>
 
                     </div>
@@ -3769,429 +1558,35 @@
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
-
-</section>
+    </main>
 
 
+    <footer class="footer">
 
-<!-- =========================================================
-     CONTACT
-========================================================= -->
+        <div class="container footer-container">
 
-<section
-    class="section contact-section"
-    id="contact"
->
-
-
-    <div class="container contact-container">
-
-
-        <div>
-
-
-            <div class="section-label">
-                06 — Contact
-            </div>
-
-
-            <h2 class="contact-title">
-
-                Let's build
-                <span>
-                    reliable systems.
-                </span>
-
-            </h2>
-
-
-            <p class="contact-description">
-
-                I'm currently open to full-time DevOps opportunities.
-                If you're looking for someone who enjoys automation,
-                CI/CD, cloud infrastructure and learning how systems
-                work end-to-end, I'd be happy to connect.
-
+            <p>
+                ©
+                <span id="year"></span>
+                Mayank Shashank Gupta
             </p>
 
+            <p>
+                DevOps · Cloud · Automation
+            </p>
 
-            <a
-                href="mailto:guptamayankshashank@gmail.com"
-                class="btn contact-button"
-            >
-
-                Start a Conversation →
-
+            <a href="#home">
+                Back to top ↑
             </a>
 
         </div>
 
+    </footer>
 
 
-        <div class="contact-details">
-
-
-            <!-- EMAIL -->
-
-            <div class="contact-item">
-
-
-                <span class="contact-item-label">
-                    Email
-                </span>
-
-
-                <a
-                    href="mailto:guptamayankshashank@gmail.com"
-                >
-
-                    guptamayankshashank@gmail.com
-
-                </a>
-
-            </div>
-
-
-
-            <!-- PHONE -->
-
-            <div class="contact-item">
-
-
-                <span class="contact-item-label">
-                    Phone
-                </span>
-
-
-                <a
-                    href="tel:+917903411876"
-                >
-
-                    +91 79034 11876
-
-                </a>
-
-            </div>
-
-
-
-            <!-- GITHUB -->
-
-            <div class="contact-item">
-
-
-                <span class="contact-item-label">
-                    GitHub
-                </span>
-
-
-                <a
-                    href="https://github.com/imayanks"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    github.com/imayanks ↗
-
-                </a>
-
-            </div>
-
-
-
-            <!-- LINKEDIN -->
-
-            <div class="contact-item">
-
-
-                <span class="contact-item-label">
-                    LinkedIn
-                </span>
-
-
-                <a
-                    href="https://www.linkedin.com/in/imayank0705"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    linkedin.com/in/imayank0705 ↗
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-</main>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer class="footer">
-
-
-    <div class="container footer-container">
-
-
-        <p>
-
-            ©
-            <span id="year"></span>
-            Mayank Shashank Gupta
-
-        </p>
-
-
-        <p>
-
-            DevOps · Cloud · Automation
-
-        </p>
-
-    </div>
-
-</footer>
-
-
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
-<script>
-
-
-    /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
-
-    const menuToggle =
-        document.getElementById("menuToggle");
-
-
-    const navMenu =
-        document.getElementById("navMenu");
-
-
-    menuToggle.addEventListener(
-        "click",
-        function () {
-
-            navMenu.classList.toggle("open");
-
-        }
-    );
-
-
-
-    /* =====================================================
-       CLOSE MOBILE MENU
-    ===================================================== */
-
-    const navLinks =
-        document.querySelectorAll(".nav-link");
-
-
-    navLinks.forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    navMenu.classList.remove("open");
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ===================================================== */
-
-    const sections =
-        document.querySelectorAll("section");
-
-
-    function updateActiveNavigation() {
-
-        let currentSection = "";
-
-
-        sections.forEach(
-            function (section) {
-
-                const sectionTop =
-                    section.offsetTop - 150;
-
-
-                const sectionBottom =
-                    sectionTop +
-                    section.offsetHeight;
-
-
-                if (
-                    window.scrollY >= sectionTop &&
-                    window.scrollY < sectionBottom
-                ) {
-
-                    currentSection =
-                        section.getAttribute("id");
-
-                }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            function (link) {
-
-                link.classList.remove("active");
-
-
-                if (
-                    link.getAttribute("href")
-                    === "#" + currentSection
-                ) {
-
-                    link.classList.add("active");
-
-                }
-
-            }
-        );
-
-    }
-
-
-    window.addEventListener(
-        "scroll",
-        updateActiveNavigation
-    );
-
-
-    updateActiveNavigation();
-
-
-
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".section-title," +
-            ".section-description," +
-            ".about-grid," +
-            ".skill-card," +
-            ".project-card," +
-            ".experience-item," +
-            ".credential," +
-            ".internship-certificate," +
-            ".contact-container"
-        );
-
-
-    revealElements.forEach(
-        function (element) {
-
-            element.classList.add("reveal");
-
-        }
-    );
-
-
-    const revealObserver =
-        new IntersectionObserver(
-            function (entries) {
-
-                entries.forEach(
-                    function (entry) {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold: 0.08
-            }
-        );
-
-
-    revealElements.forEach(
-        function (element) {
-
-            revealObserver.observe(element);
-
-        }
-    );
-
-
-
-    /* =====================================================
-       FOOTER YEAR
-    ===================================================== */
-
-    document.getElementById("year")
-        .textContent =
-        new Date().getFullYear();
-
-
-
-    /* =====================================================
-       ESCAPE KEY — CLOSE MOBILE MENU
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (event.key === "Escape") {
-
-                navMenu.classList.remove("open");
-
-            }
-
-        }
-    );
-
-
-</script>
-
+    <script src="js.js"></script>
 
 </body>
-
 </html>
