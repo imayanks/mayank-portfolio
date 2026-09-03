@@ -1,526 +1,352 @@
-const terminal = document.getElementById("terminalBody");
+/* ==========================================================================
+   PRODUCTION DEVOPS WORKSTATION SCRIPT
+   - Multi-View SPA System
+   - Node IP Clipboard Engine
+   - Interactive Bash Terminal with Command History & Autocomplete
+   - Live DevSecOps Jenkins/Argo CD Pipeline Simulator
+   - Quick Command Palette (Cmd + K / Ctrl + K)
+   ========================================================================== */
 
-const terminalLines = [
-    {
-        command: "whoami",
-        output: "Mayank Shashank Gupta"
-    },
-    {
-        command: "role",
-        output: "Aspiring DevOps Engineer"
-    },
-    {
-        command: "stack",
-        output: "AWS · Kubernetes · Docker · Terraform",
-        highlight: true
-    },
-    {
-        command: "delivery",
-        output: "GitHub Actions · Jenkins · Argo CD",
-        highlight: true
-    },
-    {
-        command: "focus",
-        output: "Automation · CI/CD · GitOps"
-    },
-    {
-        command: "experience",
-        output: "2 internships · hands-on projects"
-    },
-    {
-        command: "status",
-        output: "available_for_full_time = true",
-        success: true
-    }
-];
+// 1. Reactive View Management
+const navTabs = document.querySelectorAll(".nav-tab");
+const viewPanels = document.querySelectorAll(".view-panel");
 
-let terminalLineIndex = 0;
-let terminalCharacterIndex = 0;
-let terminalHTML = "";
+function switchView(target) {
+    navTabs.forEach(tab => {
+        tab.classList.toggle("active", tab.dataset.viewTarget === target);
+    });
 
-function typeTerminal() {
+    viewPanels.forEach(panel => {
+        panel.classList.toggle("active", panel.id === `view-${target}`);
+    });
 
-    if (!terminal) {
-        return;
+    document.body.setAttribute("data-view", target);
+
+    const consoleNav = document.querySelector(".console-nav");
+    if (consoleNav) {
+        consoleNav.classList.remove("mobile-active");
     }
 
-    if (
-        terminalLineIndex >=
-        terminalLines.length
-    ) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-        terminal.innerHTML =
-            terminalHTML +
-            `<div class="term-line">
-                <span class="term-prompt">$</span>
-                <span>_</span>
-                <span class="cursor"></span>
-            </div>`;
+navTabs.forEach(tab => {
+    tab.addEventListener("click", () => switchView(tab.dataset.viewTarget));
+});
 
-        return;
+// Mobile menu toggle
+const mobileToggle = document.getElementById("mobileToggle");
+const consoleNav = document.querySelector(".console-nav");
+
+if (mobileToggle && consoleNav) {
+    mobileToggle.addEventListener("click", () => {
+        consoleNav.classList.toggle("mobile-active");
+    });
+}
+
+// 2. Node IP Copy Engine
+function copyNodeIp() {
+    const ipText = "10.0.1.24";
+    navigator.clipboard.writeText(ipText).then(() => {
+        const btn = document.getElementById("btnCopyIp");
+        if (btn) {
+            const original = btn.textContent;
+            btn.textContent = "Copied!";
+            btn.style.color = "var(--brand-emerald)";
+            btn.style.borderColor = "var(--brand-emerald)";
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.style.color = "";
+                btn.style.borderColor = "";
+            }, 2000);
+        }
+    });
+}
+
+// 3. Project Category Filtering
+const filterPills = document.querySelectorAll(".filter-pill");
+const projectCards = document.querySelectorAll(".project-card");
+
+filterPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+        filterPills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+
+        const filter = pill.dataset.filter;
+        projectCards.forEach(card => {
+            if (filter === "all" || card.dataset.category === filter) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
+
+// 4. Manifest Code Drawer Toggle
+function toggleManifest(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.classList.toggle("open");
     }
+}
 
-    const current =
-        terminalLines[terminalLineIndex];
+// 5. Interactive Bash Shell (CLI Emulator)
+const termScreen = document.getElementById("termScreen");
+const termHistory = document.getElementById("termHistory");
+const termInput = document.getElementById("termInput");
 
-    if (terminalCharacterIndex === 0) {
+const cliDatabase = {
+    "help": "Available commands:\n  • kubectl get pods       - List running k8s pods\n  • kubectl get nodes      - List AWS EKS worker nodes\n  • terraform state list   - Inspect provisioned infrastructure\n  • trivy scan             - Execute container vulnerability audit\n  • cat resume             - View career summary & contacts\n  • clear                  - Clear terminal output\n  • whoami                 - View authenticated IAM user",
+    "kubectl get pods": "NAME                               READY   STATUS    RESTARTS   AGE\nretail-frontend-7f89d7b4c-28m9l    1/1     Running   0          4d2h\nretail-catalog-5d68bc874-vkl4m     1/1     Running   0          4d2h\nretail-cart-9f84b574f-9m8wq        1/1     Running   0          4d2h\ntetris-devsecops-845b98cf9-x7zq4   1/1     Running   0          12d",
+    "kubectl get nodes": "NAME                             STATUS   ROLES    AGE   VERSION\nip-10-0-1-24.ec2.internal        Ready    node     34d   v1.30.2-eks\nip-10-0-2-88.ec2.internal        Ready    node     34d   v1.30.2-eks",
+    "terraform state list": "aws_vpc.main\naws_subnet.public[0]\naws_subnet.private[0]\naws_eks_cluster.production\naws_eks_node_group.workers\naws_db_instance.rds_postgres\naws_lb.alb_ingress",
+    "trivy scan": "2026-09-03T11:00:24Z INFO Scanning container image: ecr.aws/retail:latest\nTotal: 0 vulnerabilities (CRITICAL: 0, HIGH: 0, MEDIUM: 0)\nArtifact clean. Image approved for production rollout.",
+    "cat resume": "MAYANK SHASHANK GUPTA\nEmail: guptamayankshashank@gmail.com | Phone: +91 79034 11876\nEducation: B.E. Civil Eng (BMS College of Engineering, CGPA: 7.43)\nSpecialty: AWS, Kubernetes, Terraform, Jenkins, Argo CD, DevSecOps.",
+    "whoami": "arn:aws:iam::8942119024:user/Mayank-Shashank (AdministratorAccess)"
+};
 
-        terminalHTML +=
-            `<div class="term-line">
-                <span class="term-prompt">$</span>
-                <span class="term-command">
-                    ${current.command}
-                </span>
-            </div>
-            <div class="term-output ${
-                current.highlight
-                    ? "term-highlight"
-                    : ""
-            } ${
-                current.success
-                    ? "term-success"
-                    : ""
-            }">`;
+let cmdHistoryStack = [];
+let historyPointer = -1;
 
-    }
+function runCliCommand(rawCmd) {
+    if (!termHistory || !termInput) return;
+    const cleanCmd = rawCmd.trim();
+    if (!cleanCmd) return;
 
-    if (
-        terminalCharacterIndex <
-        current.output.length
-    ) {
+    cmdHistoryStack.push(cleanCmd);
+    historyPointer = cmdHistoryStack.length;
 
-        terminalHTML +=
-            current.output[
-                terminalCharacterIndex
-            ];
+    const row = document.createElement("div");
+    row.style.marginBottom = "8px";
+    row.innerHTML = `<span style="color:#10b981; font-weight:bold;">mayank:~$</span> <span style="color:#fff;">${cleanCmd}</span>`;
+    termHistory.appendChild(row);
 
-        terminalCharacterIndex++;
-
-        terminal.innerHTML =
-            terminalHTML +
-            `<span class="cursor"></span>`;
-
-        setTimeout(
-            typeTerminal,
-            18
-        );
-
+    if (cleanCmd.toLowerCase() === "clear") {
+        termHistory.innerHTML = "";
     } else {
+        const response = document.createElement("pre");
+        response.style.fontFamily = "var(--font-mono)";
+        response.style.fontSize = "11.5px";
+        response.style.color = "#94a3b8";
+        response.style.lineHeight = "1.5";
+        response.style.marginBottom = "10px";
+        response.style.whiteSpace = "pre-wrap";
 
-        terminalHTML += "</div>";
-
-        terminalCharacterIndex = 0;
-        terminalLineIndex++;
-
-        setTimeout(
-            typeTerminal,
-            110
-        );
+        if (cliDatabase[cleanCmd]) {
+            response.textContent = cliDatabase[cleanCmd];
+        } else {
+            response.textContent = `bash: command not found: ${cleanCmd}. Type 'help' to see valid commands.`;
+        }
+        termHistory.appendChild(response);
     }
+
+    termInput.value = "";
+    termScreen.scrollTop = termScreen.scrollHeight;
 }
 
-typeTerminal();
-
-
-const menuToggle =
-    document.getElementById(
-        "menuToggle"
-    );
-
-const navMenu =
-    document.getElementById(
-        "navMenu"
-    );
-
-
-if (
-    menuToggle &&
-    navMenu
-) {
-
-    menuToggle.addEventListener(
-        "click",
-        () => {
-
-            const isOpen =
-                navMenu.classList.toggle(
-                    "open"
-                );
-
-            menuToggle.classList.toggle(
-                "open",
-                isOpen
-            );
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
+if (termInput) {
+    termInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            runCliCommand(termInput.value);
+        } else if (e.key === "ArrowUp") {
+            if (historyPointer > 0) {
+                historyPointer--;
+                termInput.value = cmdHistoryStack[historyPointer];
+            }
+        } else if (e.key === "ArrowDown") {
+            if (historyPointer < cmdHistoryStack.length - 1) {
+                historyPointer++;
+                termInput.value = cmdHistoryStack[historyPointer];
+            } else {
+                historyPointer = cmdHistoryStack.length;
+                termInput.value = "";
+            }
+        } else if (e.key === "Tab") {
+            e.preventDefault();
+            const keys = Object.keys(cliDatabase);
+            const match = keys.find(k => k.startsWith(termInput.value.trim()));
+            if (match) termInput.value = match;
         }
-    );
-
+    });
 }
 
+// 6. DevSecOps Jenkins + Argo CD Pipeline Simulator
+const btnRunPipeline = document.getElementById("btnRunPipeline");
+const pipelineConsole = document.getElementById("pipelineConsole");
 
-const navLinks = [
-    ...document.querySelectorAll(
-        ".nav-link"
-    )
+const pipelineSteps = [
+    { id: "stage-lint", title: "SonarQube SAST", log: "[INFO] Running SonarScanner analysis... 0 bugs, 0 vulnerabilities. Quality Gate: PASSED." },
+    { id: "stage-sast", title: "OWASP Dependency Check", log: "[INFO] OWASP Dependency-Check running... 0 High/Critical CVEs identified in manifests." },
+    { id: "stage-docker", title: "Trivy Container Scan", log: "[INFO] Trivy scanning ECR image... Image vulnerability score: CLEAN (0 vulnerabilities)." },
+    { id: "stage-argo", title: "Argo CD GitOps Sync", log: "[INFO] Argo CD synchronizing cluster state with Git HEAD... Application Healthy & Synced." }
 ];
 
+let pipelineActive = false;
 
-navLinks.forEach(
-    link => {
+if (btnRunPipeline) {
+    btnRunPipeline.addEventListener("click", () => {
+        if (pipelineActive) return;
+        pipelineActive = true;
+        btnRunPipeline.disabled = true;
+        btnRunPipeline.textContent = "Pipeline Running...";
 
-        link.addEventListener(
-            "click",
-            () => {
+        pipelineConsole.innerHTML = `[build-agent] Initializing pipeline execution on AWS runner...\n`;
 
-                navMenu.classList.remove(
-                    "open"
-                );
-
-                menuToggle.classList.remove(
-                    "open"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
+        pipelineSteps.forEach(s => {
+            const node = document.getElementById(s.id);
+            if (node) {
+                node.className = "p-stage";
+                node.querySelector(".p-status").textContent = "QUEUED";
             }
-        );
+        });
 
-    }
-);
+        let idx = 0;
+        function advanceStage() {
+            if (idx < pipelineSteps.length) {
+                const current = pipelineSteps[idx];
+                const stageEl = document.getElementById(current.id);
 
-
-const sections = [
-    ...document.querySelectorAll(
-        "main section"
-    )
-];
-
-
-const updateActiveNavigation = () => {
-
-    let currentSection = "";
-
-    sections.forEach(
-        section => {
-
-            const top =
-                section.offsetTop -
-                170;
-
-            const bottom =
-                top +
-                section.offsetHeight;
-
-            if (
-                window.scrollY >= top &&
-                window.scrollY < bottom
-            ) {
-
-                currentSection =
-                    section.id;
-
-            }
-
-        }
-    );
-
-
-    navLinks.forEach(
-        link => {
-
-            link.classList.toggle(
-                "active",
-                link.getAttribute(
-                    "href"
-                ) ===
-                `#${currentSection}`
-            );
-
-        }
-    );
-
-};
-
-
-window.addEventListener(
-    "scroll",
-    updateActiveNavigation,
-    {
-        passive: true
-    }
-);
-
-
-updateActiveNavigation();
-
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        !entry.isIntersecting
-                    ) {
-                        return;
-                    }
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
+                if (stageEl) {
+                    stageEl.className = "p-stage active";
+                    stageEl.querySelector(".p-status").textContent = "RUNNING";
                 }
-            );
 
-        },
-        {
-            threshold: 0.08
+                pipelineConsole.innerHTML += `[${new Date().toLocaleTimeString()}] ${current.log}\n`;
+                pipelineConsole.scrollTop = pipelineConsole.scrollHeight;
+
+                setTimeout(() => {
+                    if (stageEl) {
+                        stageEl.className = "p-stage success";
+                        stageEl.querySelector(".p-status").textContent = "SUCCESS";
+                    }
+                    idx++;
+                    advanceStage();
+                }, 850);
+            } else {
+                pipelineConsole.innerHTML += `[${new Date().toLocaleTimeString()}] ✔ Pipeline build completed. Workloads running on AWS EKS.\n`;
+                btnRunPipeline.disabled = false;
+                btnRunPipeline.textContent = "Dispatch Pipeline";
+                pipelineActive = false;
+            }
         }
-    );
 
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(
-        (element, index) => {
-
-            element.style.transitionDelay =
-                `${Math.min(index * 45, 360)}ms`;
-
-            revealObserver.observe(
-                element
-            );
-
-        }
-    );
-
-
-const navbar =
-    document.getElementById(
-        "navbar"
-    );
-
-const progress =
-    document.getElementById(
-        "scrollProgress"
-    );
-
-
-const updateScrollUI = () => {
-
-    if (navbar) {
-
-        navbar.classList.toggle(
-            "scrolled",
-            window.scrollY > 18
-        );
-
-    }
-
-
-    if (progress) {
-
-        const maxScroll =
-            document.documentElement
-                .scrollHeight -
-            window.innerHeight;
-
-        const percentage =
-            maxScroll > 0
-                ? (
-                    window.scrollY /
-                    maxScroll
-                ) * 100
-                : 0;
-
-        progress.style.width =
-            `${Math.min(
-                percentage,
-                100
-            )}%`;
-
-    }
-
-};
-
-
-window.addEventListener(
-    "scroll",
-    updateScrollUI,
-    {
-        passive: true
-    }
-);
-
-
-updateScrollUI();
-
-
-const cursorGlow =
-    document.querySelector(
-        ".cursor-glow"
-    );
-
-
-if (cursorGlow) {
-
-    document.addEventListener(
-        "mousemove",
-        event => {
-
-            cursorGlow.style.left =
-                `${event.clientX}px`;
-
-            cursorGlow.style.top =
-                `${event.clientY}px`;
-
-        }
-    );
-
+        advanceStage();
+    });
 }
 
+// 7. Global Command Palette (Cmd + K)
+const cmdOverlay = document.getElementById("cmdOverlay");
+const cmdTriggerBtn = document.getElementById("cmdTriggerBtn");
+const cmdInput = document.getElementById("cmdInput");
+const cmdResults = document.getElementById("cmdResults");
 
-const projectCards = [
-    ...document.querySelectorAll(
-        ".project-card"
-    )
+const quickActions = [
+    { name: "View Overview & Dashboard", action: () => switchView("dashboard"), tag: "View" },
+    { name: "Inspect 3 Production Projects", action: () => switchView("deployments"), tag: "Projects" },
+    { name: "Open Interactive CLI Shell & Pipeline", action: () => switchView("workstation"), tag: "Interactive" },
+    { name: "Open Credentials & Certifications", action: () => switchView("credentials"), tag: "Vault" },
+    { name: "Download Resume.pdf", action: () => window.open("assets/resume.pdf", "_blank"), tag: "File" },
+    { name: "Visit GitHub Repositories", action: () => window.open("https://github.com/imayanks", "_blank"), tag: "Link" },
+    { name: "Visit LinkedIn Profile", action: () => window.open("https://www.linkedin.com/in/imayank0705", "_blank"), tag: "Link" },
+    { name: "Copy Bastion Node IP", action: () => copyNodeIp(), tag: "Action" }
 ];
 
+function renderCmdResults(query = "") {
+    if (!cmdResults) return;
+    cmdResults.innerHTML = "";
 
-projectCards.forEach(
-    card => {
+    const filtered = quickActions.filter(i => i.name.toLowerCase().includes(query.toLowerCase()));
 
-        card.addEventListener(
-            "mousemove",
-            event => {
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    (
-                        (
-                            event.clientX -
-                            rect.left
-                        ) /
-                        rect.width
-                    ) * 100;
-
-                const y =
-                    (
-                        (
-                            event.clientY -
-                            rect.top
-                        ) /
-                        rect.height
-                    ) * 100;
-
-                card.style.setProperty(
-                    "--mouse-x",
-                    `${x}%`
-                );
-
-                card.style.setProperty(
-                    "--mouse-y",
-                    `${y}%`
-                );
-
-            }
-        );
-
+    if (filtered.length === 0) {
+        cmdResults.innerHTML = `<div style="padding: 12px; font-size:13px; color:#64748b;">No matching commands found.</div>`;
+        return;
     }
-);
 
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key ===
-            "Escape"
-        ) {
-
-            if (navMenu) {
-                navMenu.classList.remove(
-                    "open"
-                );
-            }
-
-            if (menuToggle) {
-
-                menuToggle.classList.remove(
-                    "open"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-const yearElement =
-    document.getElementById(
-        "year"
-    );
-
-
-if (yearElement) {
-
-    yearElement.textContent =
-        new Date().getFullYear();
-
+    filtered.forEach((item, i) => {
+        const el = document.createElement("div");
+        el.className = `cmd-item ${i === 0 ? 'selected' : ''}`;
+        el.innerHTML = `
+            <span>${item.name}</span>
+            <span class="cmd-item-shortcut">${item.tag}</span>
+        `;
+        el.addEventListener("click", () => {
+            item.action();
+            closeCmdPalette();
+        });
+        cmdResults.appendChild(el);
+    });
 }
 
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if (
-            window.innerWidth > 800 &&
-            navMenu
-        ) {
-
-            navMenu.classList.remove(
-                "open"
-            );
-
-            if (menuToggle) {
-
-                menuToggle.classList.remove(
-                    "open"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
-
+function openCmdPalette() {
+    if (cmdOverlay) {
+        cmdOverlay.classList.add("active");
+        renderCmdResults("");
+        if (cmdInput) {
+            cmdInput.value = "";
+            cmdInput.focus();
         }
-
     }
-);
+}
+
+function closeCmdPalette() {
+    if (cmdOverlay) {
+        cmdOverlay.classList.remove("active");
+    }
+}
+
+if (cmdTriggerBtn) {
+    cmdTriggerBtn.addEventListener("click", openCmdPalette);
+}
+
+window.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        if (cmdOverlay && cmdOverlay.classList.contains("active")) {
+            closeCmdPalette();
+        } else {
+            openCmdPalette();
+        }
+    } else if (e.key === "Escape") {
+        closeCmdPalette();
+    }
+});
+
+if (cmdInput) {
+    cmdInput.addEventListener("input", (e) => {
+        renderCmdResults(e.target.value);
+    });
+}
+
+if (cmdOverlay) {
+    cmdOverlay.addEventListener("click", (e) => {
+        if (e.target === cmdOverlay) closeCmdPalette();
+    });
+}
+
+// 8. Dynamic Year & Global Telemetry
+const dynYear = document.getElementById("dynYear");
+if (dynYear) {
+    dynYear.textContent = new Date().getFullYear();
+}
+
+window.addEventListener("scroll", () => {
+    const readingProgress = document.getElementById("readingProgress");
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (readingProgress && docHeight > 0) {
+        readingProgress.style.width = `${(window.scrollY / docHeight) * 100}%`;
+    }
+
+    const topNav = document.getElementById("topNav");
+    if (topNav) {
+        topNav.classList.toggle("scrolled", window.scrollY > 20);
+    }
+}, { passive: true });
+
+// Live Simulated Telemetry Jitter
+setInterval(() => {
+    const reqEl = document.getElementById("telemetryReq");
+    const latEl = document.getElementById("telemetryLat");
+    if (reqEl) reqEl.textContent = (1450 + Math.floor(Math.random() * 60)).toLocaleString();
+    if (latEl) latEl.textContent = 13 + Math.floor(Math.random() * 3);
+}, 3000);
